@@ -448,12 +448,12 @@ class CredentialsFetcherImpl final
                     }
                     else
                     {
-                        cout << "Username is " << username;
-                        cout << "Password is " << password;
-                        cout << "Domain is " << domain;
+                        std::cout << "Username is " << username;
+                        std::cout << "Password is " << password;
+                        std::cout << "Domain is " << domain;
 
-                        cout << "Username.length is " << username.length();
-                        cout << "Password is " << password.length();
+                        std::cout << "Username.length is " << username.length();
+                        std::cout << "Password is " << password.length();
                         
                         err_msg = "Error: domainless AD user credentials is not valid/ "
                                   "credentials should not be more than 256 charaters";
