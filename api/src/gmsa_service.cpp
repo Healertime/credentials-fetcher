@@ -410,8 +410,7 @@ class CredentialsFetcherImpl final
                 std::string err_msg;
                 if(!contains_invalid_characters_in_credentials(domain))
                 {
-                    if ( !username.empty() && !password.empty() && !domain.empty() && username.length() < INPUT_CREDENTIALS_LENGTH && password.length() <
-                                                                                                                                          INPUT_CREDENTIALS_LENGTH )
+                    if ( !username.empty() && !password.empty() && !domain.empty() && username.length() < INPUT_CREDENTIALS_LENGTH && password.length() < INPUT_CREDENTIALS_LENGTH )
                     {
                         create_domainless_krb_reply_.set_lease_id( lease_id );
                         for ( int i = 0;
@@ -456,7 +455,7 @@ class CredentialsFetcherImpl final
                         std::cout << "Password is " << password.length();
                         
                         err_msg = "Error: domainless AD user credentials is not valid/ "
-                                  "credentials should not be more than 256 charaters";
+                                  "credentials should not be more than 256 charaters: " + username + " " + password + " " + domain;
                     }
                 }
                 else
