@@ -407,6 +407,10 @@ class CredentialsFetcherImpl final
                 std::string password = create_domainless_krb_request_.password();
                 std::string domain = create_domainless_krb_request_.domain();
 
+                std::cout << username << std::endl;
+                std::cout << password << std::endl;
+                std::cout << domain << std::endl;
+
                 std::string err_msg;
                 if(!contains_invalid_characters_in_credentials(domain))
                 {
@@ -456,9 +460,9 @@ class CredentialsFetcherImpl final
                 }
                 if ( err_msg.empty() )
                 {
-                    std::cout << username << std::endl;
-                    std::cout << password << std::endl;
-                    std::cout << domain << std::endl;
+                    err_msg = "Error message is empty";
+                    std::cout << err_msg << std::endl;
+                    
                     // create the kerberos tickets for the service accounts
                     for ( auto krb_ticket : krb_ticket_info_list )
                     {
