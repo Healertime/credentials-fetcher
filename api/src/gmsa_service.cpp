@@ -456,6 +456,9 @@ class CredentialsFetcherImpl final
                 }
                 if ( err_msg.empty() )
                 {
+                    std::cout << username << std::endl;
+                    std::cout << password << std::endl;
+                    std::cout << domain << std::endl;
                     // create the kerberos tickets for the service accounts
                     for ( auto krb_ticket : krb_ticket_info_list )
                     {
@@ -471,6 +474,7 @@ class CredentialsFetcherImpl final
                         status = get_domainless_user_krb_ticket( domain,
                                                                  username, password,
                                                                      cf_logger );
+                        std::cout << status << std::endl;
                         if ( status < 0 )
                         {
                             cf_logger.logger( LOG_ERR, "Error %d: cannot domainless user kerberos tickets",
