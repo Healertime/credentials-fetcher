@@ -439,8 +439,7 @@ class CredentialsFetcherImpl final
                             }
                             else
                             {
-                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain
-                                          "Credspec: " + credspec_contents;
+                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain + " " + "Credspec: " + credspec_contents;
                                 break;
                             }
                         }
