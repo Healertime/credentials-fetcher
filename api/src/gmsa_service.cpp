@@ -3,10 +3,11 @@
 #include <boost/filesystem.hpp>
 #include <credentialsfetcher.grpc.pb.h>
 #include <fstream>
+#include <iostream>
+#include <random>
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
-#include <random>
 
 #define LEASE_ID_LENGTH 10
 #define UNIX_SOCKET_NAME "credentials_fetcher.sock"
