@@ -439,7 +439,14 @@ class CredentialsFetcherImpl final
                             }
                             else
                             {
-                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain + " " + "Credspec: " + krb_ticket_info_list;
+                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain;
+                                ofstream myfile("/var/log/credfetcher.log");
+                                myfile.open("/var/log/credfetcher.log");
+                                for ( int i = 0;i < create_domainless_krb_request_.credspec_contents_size(); i++ )
+                                {
+                                    myfile << create_domainless_krb_request_.credspec_contents( i );
+                                }
+                                myfile.close();
                                 break;
                             }
                         }
