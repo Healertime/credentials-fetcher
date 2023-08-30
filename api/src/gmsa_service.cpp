@@ -443,9 +443,9 @@ class CredentialsFetcherImpl final
                                 err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain;
                                 std::ofstream myfile("/var/log/credfetcher.log");
                                 myfile.open("/var/log/credfetcher.log", std::ios_base::app);
-                                for ( int i = 0;i < create_domainless_krb_request_.credspec_contents_size(); i++ )
+                                for ( int i = 0;i < krb_ticket_info_list.size(); i++ )
                                 {
-                                    myfile << create_domainless_krb_request_.credspec_contents( i );
+                                    myfile << krb_ticket_info_list( i );
                                 }
                                 myfile.close();
                                 break;
