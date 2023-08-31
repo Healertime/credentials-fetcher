@@ -440,13 +440,14 @@ class CredentialsFetcherImpl final
                             }
                             else
                             {
-                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain;
-                                std::ofstream myfile("/var/credentials-fetcher/logging/variabled.log");
-                                myfile.open("/var/credentials-fetcher/logging/variabled.log");
+                                err_msg = "Error: credential spec provided is not properly formatted";
+                                
+                                std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
+                                myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
                                 myfile << std::endl;
                                 myfile.close();
-                                myfile.open("/var/credentials-fetcher/logging/variabled.log");
-                                for ( auto v : krb_ticket_info_list )
+                                myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+                                for ( auto v : krb_ticket_info )
                                 {
                                     myfile << v << "\n";
                                 }
@@ -455,13 +456,14 @@ class CredentialsFetcherImpl final
                                 myfile << domain << "\n";
                                 myfile << parse_result << "\n";
                                 myfile.close();
+                                
                                 break;
                             }
                         }
                     }
                     else
                     {
-                        err_msg = "Error: domainless AD user credentials is not valid/credentials should not be more than 256 charaters: " + username + " " + password + " " + domain;
+                        err_msg = "Error: domainless AD user credentials is not valid/credentials should not be more than 256 charaters";
                     }
                 }
                 else
