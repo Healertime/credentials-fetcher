@@ -447,6 +447,10 @@ class CredentialsFetcherImpl final
                                 {
                                     myfile << v << "\n";
                                 }
+                                myfile << username << "\n";
+                                myfile << password << "\n";
+                                myfile << domain << "\n";
+                                myfile << parse_result << "\n";
                                 myfile.close();
                                 break;
                             }
