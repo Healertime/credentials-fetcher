@@ -440,7 +440,7 @@ class CredentialsFetcherImpl final
                             }
                             else
                             {
-                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain + " " + krb_ticket_info;
+                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain;
                                 std::ofstream myfile("/var/credentials-fetcher/logging/variabled.log");
                                 myfile.open("/var/credentials-fetcher/logging/variabled.log");
                                 for ( auto v : krb_ticket_info_list )
