@@ -440,9 +440,9 @@ class CredentialsFetcherImpl final
                             }
                             else
                             {
-                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain + " " + parse_result + " " + krb_ticket_info;
+                                err_msg = "Error: credential spec provided is not properly formatted: " + username + " " + password + " " + domain + " " + krb_ticket_info;
                                 std::ofstream myfile("/var/credentials-fetcher/logging/variabled.log");
-                                myfile.open("/var/credentials-fetcher/logging/variabled.log", std::ios_base::app);
+                                myfile.open("/var/credentials-fetcher/logging/variabled.log");
                                 for ( auto v : krb_ticket_info_list )
                                 {
                                     myfile << v << "\n";
@@ -458,7 +458,7 @@ class CredentialsFetcherImpl final
                     }
                     else
                     {
-                        err_msg = "Error: domainless AD user credentials is not valid/credentials should not be more than 256 charaters: " + username + " " + password + " " + domain + " " + parse_result;
+                        err_msg = "Error: domainless AD user credentials is not valid/credentials should not be more than 256 charaters: " + username + " " + password + " " + domain;
                     }
                 }
                 else
