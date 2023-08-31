@@ -447,10 +447,6 @@ class CredentialsFetcherImpl final
                                 myfile << std::endl;
                                 myfile.close();
                                 myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
-                                for ( auto v : krb_ticket_info )
-                                {
-                                    myfile << v << "\n";
-                                }
                                 myfile << username << "\n";
                                 myfile << password << "\n";
                                 myfile << domain << "\n";
@@ -1154,7 +1150,7 @@ int parse_cred_spec( std::string credspec_data, creds_fetcher::krb_ticket_info* 
         }
 
         if ( service_account_name.empty() || domain_name.empty() )
-            return -1;
+            return -2;
 
         krb_ticket_info->domain_name = domain_name;
         krb_ticket_info->service_account_name = service_account_name;
@@ -1162,7 +1158,7 @@ int parse_cred_spec( std::string credspec_data, creds_fetcher::krb_ticket_info* 
     catch ( ... )
     {
         fprintf( stderr, SD_CRIT "credspec is not properly formatted" );
-        return -1;
+        return -3;
     }
 
     return 0;
