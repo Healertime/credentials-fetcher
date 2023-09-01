@@ -522,7 +522,20 @@ class CredentialsFetcherImpl final
                         if ( gmsa_ticket_result.first != 0 )
                         {
                             err_msg = "ERROR: Cannot get gMSA krb ticket";
-                            std::cout << err_msg << std::endl;
+
+                            std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
+                            myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+                            myfile << std::endl;
+                            myfile.close();
+                            myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+                            myfile << "parse_result" << "\n";
+                            myfile << parse_result << "\n";
+                            myfile << "gmsa_ticket_result.first" << "\n";
+                            myfile << gmsa_ticket_result.first << "\n";
+                            myfile << "gmsa_ticket_result.second" << "\n";
+                            myfile << gmsa_ticket_result.second << "\n";
+                            myfile.close();
+                            
                             cf_logger.logger( LOG_ERR, "ERROR: Cannot get gMSA krb ticket",
                                               status );
                             break;
