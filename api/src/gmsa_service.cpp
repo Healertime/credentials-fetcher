@@ -528,8 +528,8 @@ class CredentialsFetcherImpl final
                             myfile << std::endl;
                             myfile.close();
                             myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
-                            myfile << "parse_result" << "\n";
-                            myfile << parse_result << "\n";
+                            myfile << "status" << "\n";
+                            myfile << status << "\n";
                             myfile << "gmsa_ticket_result.first" << "\n";
                             myfile << gmsa_ticket_result.first << "\n";
                             myfile << "gmsa_ticket_result.second" << "\n";
