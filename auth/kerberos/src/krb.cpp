@@ -305,14 +305,14 @@ int get_domainless_user_krb_ticket( std::string domain_name, std::string usernam
     rtrim( cmd.second );
     if ( !check_file_permissions( cmd.second ) )
     {
-        return -1;
+        return -2;
     }
 
     cmd = exec_shell_cmd( "which ldapsearch" );
     rtrim( cmd.second );
     if ( !check_file_permissions( cmd.second ) )
     {
-        return -1;
+        return -3;
     }
 
     std::transform( domain_name.begin(), domain_name.end(), domain_name.begin(),
