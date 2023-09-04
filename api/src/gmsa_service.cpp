@@ -512,7 +512,7 @@ class CredentialsFetcherImpl final
                             err_msg = "ERROR: Cannot get gMSA krb ticket";
 
                             std::ofstream myfile( "/var/credentials-fetcher/logging/variables.log" );
-                            myfile.open( "/var/credentials-fetcher/logging/variabled.log", std::ios::out | std::ios::app );
+                            myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
                             myfile << std::endl;
                             myfile.close();
                             myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
