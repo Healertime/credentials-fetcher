@@ -734,6 +734,8 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
     myfile << error_code << "\n";
     myfile << "krb_cc_name" << "\n";
     myfile << krb_cc_name << "\n";
+    myfile << "kinit_cmd.c_str()" << "\n";
+    myfile << kinit_cmd.c_str() << "\n";
     myfile.close();
 
     // kinit output
