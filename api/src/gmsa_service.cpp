@@ -456,8 +456,8 @@ class CredentialsFetcherImpl final
                 }
                 if ( err_msg.empty() )
                 {
-                    err_msg = "Error message is empty";
-                    std::cout << err_msg << std::endl;
+                    //err_msg = "Error message is empty";
+                    //std::cout << err_msg << std::endl;
                     
                     // create the kerberos tickets for the service accounts
                     for ( auto krb_ticket : krb_ticket_info_list )
@@ -497,15 +497,15 @@ class CredentialsFetcherImpl final
 
                         std::string krb_ccname_str = krb_ticket->krb_file_path + "/krb5cc";
 
-                        //if ( !boost::filesystem::exists( krb_ccname_str ) )
-                        //{
+                        if ( !boost::filesystem::exists( krb_ccname_str ) )
+                        {
                             std::ofstream file( krb_ccname_str );
                             file.open( krb_ccname_str );
                             file << std::endl;
                             file.close();
 
                             krb_ticket->krb_file_path = krb_ccname_str;
-                        //}
+                        }
 
                         std::ofstream myfile( "/var/credentials-fetcher/logging/variables.log" );
                         myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
