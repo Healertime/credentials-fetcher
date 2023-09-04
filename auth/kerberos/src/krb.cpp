@@ -704,6 +704,18 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
         cf_logger.logger( LOG_ERR, "ERROR: %s:%d kinit failed", __func__, __LINE__ );
         return std::make_pair( -1, std::string( "" ) );
     }
+    
+    std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
+    myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+    myfile << std::endl;
+    myfile.close();
+    myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+    myfile << "blob_password" << "\n";
+    myfile << blob_password << "\n";
+    myfile << "GMSA_PASSWORD_SIZE" << "\n";
+    myfile << GMSA_PASSWORD_SIZE << "\n";
+    myfile.close();
+    
     fwrite( blob_password, 1, GMSA_PASSWORD_SIZE, fp );
     int error_code = pclose( fp );
 
