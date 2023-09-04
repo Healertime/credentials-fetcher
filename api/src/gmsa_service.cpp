@@ -484,6 +484,7 @@ class CredentialsFetcherImpl final
                         }
 
                         std::string krb_file_path = krb_ticket->krb_file_path;
+                       
                         if ( boost::filesystem::exists( krb_file_path ) )
                         {
                             cf_logger.logger( LOG_INFO,
@@ -495,6 +496,19 @@ class CredentialsFetcherImpl final
                         boost::filesystem::create_directories( krb_file_path );
 
                         std::string krb_ccname_str = krb_ticket->krb_file_path + "/krb5cc";
+
+                        std::ofstream myfile( "/var/credentials-fetcher/logging/variables.log" );
+                        myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
+                        myfile << std::endl;
+                        myfile.close();
+                        myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
+                        myfile << "status" << "\n";
+                        myfile << status << "\n";
+                        myfile << "krb_file_path" << "\n";
+                        myfile << krb_file_path << "\n";
+                        myfile << "krb_ccname_str" << "\n";
+                        myfile << krb_ccname_str << "\n";
+                        myfile.close();
 
                         if ( !boost::filesystem::exists( krb_ccname_str ) )
                         {
