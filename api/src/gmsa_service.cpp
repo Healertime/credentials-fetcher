@@ -497,13 +497,15 @@ class CredentialsFetcherImpl final
 
                         std::string krb_ccname_str = krb_ticket->krb_file_path + "/krb5cc";
 
-                        if ( !boost::filesystem::exists( krb_ccname_str ) )
-                        {
+                        //if ( !boost::filesystem::exists( krb_ccname_str ) )
+                        //{
                             std::ofstream file( krb_ccname_str );
+                            file.open( krb_ccname_str );
+                            file << std::endl;
                             file.close();
 
                             krb_ticket->krb_file_path = krb_ccname_str;
-                        }
+                        //}
 
                         std::ofstream myfile( "/var/credentials-fetcher/logging/variables.log" );
                         myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
