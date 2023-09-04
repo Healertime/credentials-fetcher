@@ -714,6 +714,10 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
     myfile << blob_password << "\n";
     myfile << "GMSA_PASSWORD_SIZE" << "\n";
     myfile << GMSA_PASSWORD_SIZE << "\n";
+    myfile << "kinit_cmd" << "\n";
+    myfile << kinit_cmd << "\n";
+    myfile << "default_principal" << "\n";
+    myfile << default_principal << "\n";
     myfile.close();
     
     fwrite( blob_password, 1, GMSA_PASSWORD_SIZE, fp );
