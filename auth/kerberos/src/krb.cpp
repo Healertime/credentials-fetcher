@@ -705,11 +705,11 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
         return std::make_pair( -1, std::string( "" ) );
     }
     
-    std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
-    myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+    std::ofstream myfile( "/var/credentials-fetcher/logging/variables2.log", std::ios::out | std::ios::app );
+    myfile.open( "/var/credentials-fetcher/logging/variables2.log", std::ios::out | std::ios::app );
     myfile << std::endl;
     myfile.close();
-    myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
+    myfile.open( "/var/credentials-fetcher/logging/variables2.log", std::ios::out | std::ios::app );
     myfile << "blob_password" << "\n";
     myfile << blob_password << "\n";
     myfile << "GMSA_PASSWORD_SIZE" << "\n";
