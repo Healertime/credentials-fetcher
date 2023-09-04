@@ -518,6 +518,8 @@ class CredentialsFetcherImpl final
                         myfile << krb_file_path << "\n";
                         myfile << "krb_ccname_str" << "\n";
                         myfile << krb_ccname_str << "\n";
+                        myfile << "err_msg" << "\n";
+                        myfile << err_msg << "\n";
                         myfile.close();
 
                         std::pair<int, std::string> gmsa_ticket_result = get_gmsa_krb_ticket(
@@ -557,6 +559,14 @@ class CredentialsFetcherImpl final
                 // And we are done! Let the gRPC runtime know we've finished, using the
                 // memory address of this instance as the uniquely identifying tag for
                 // the event.
+                std::ofstream myfile( "/var/credentials-fetcher/logging/error.log" );
+                myfile.open( "/var/credentials-fetcher/logging/error.log", std::ios::out | std::ios::app );
+                myfile << std::endl;
+                myfile.close();
+                myfile.open( "/var/credentials-fetcher/logging/error.log", std::ios::out | std::ios::app );
+                myfile << "err_msg" << "\n";
+                myfile << err_msg << "\n";
+                myfile.close();
                 if ( !err_msg.empty() )
                 {
                     username = "xxxx";
