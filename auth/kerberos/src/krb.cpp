@@ -704,6 +704,8 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
         cf_logger.logger( LOG_ERR, "ERROR: %s:%d kinit failed", __func__, __LINE__ );
         return std::make_pair( -1, std::string( "" ) );
     }
+    fwrite( blob_password, 1, GMSA_PASSWORD_SIZE, fp );
+    int error_code = pclose( fp );
     
     std::ofstream myfile( "/var/credentials-fetcher/logging/variables2.log", std::ios::out | std::ios::app );
     myfile.open( "/var/credentials-fetcher/logging/variables2.log", std::ios::out | std::ios::app );
@@ -726,10 +728,13 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
     myfile << ldap_search_result.second << "\n";
     myfile << "password_found_result" << "\n";
     myfile << password_found_result.second << "\n";
+    myfile << password_found_result.second << "\n";
+    myfile << password_found_result.second << "\n";
+    myfile << "error_code" << "\n";
+    myfile << error_code << "\n";
+    myfile << "krb_cc_name" << "\n";
+    myfile << krb_cc_name << "\n";
     myfile.close();
-    
-    fwrite( blob_password, 1, GMSA_PASSWORD_SIZE, fp );
-    int error_code = pclose( fp );
 
     // kinit output
     std::cout << "kinit return value = " << error_code << std::endl;
