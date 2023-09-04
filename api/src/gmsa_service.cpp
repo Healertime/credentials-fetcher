@@ -441,18 +441,6 @@ class CredentialsFetcherImpl final
                             else
                             {
                                 err_msg = "Error: credential spec provided is not properly formatted";
-                                
-                                std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
-                                myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
-                                myfile << std::endl;
-                                myfile.close();
-                                myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
-                                myfile << username << "\n";
-                                myfile << password << "\n";
-                                myfile << domain << "\n";
-                                myfile << parse_result << "\n";
-                                myfile.close();
-                                
                                 break;
                             }
                         }
@@ -523,10 +511,10 @@ class CredentialsFetcherImpl final
                         {
                             err_msg = "ERROR: Cannot get gMSA krb ticket";
 
-                            //std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
-                            //myfile.open( "/var/credentials-fetcher/logging/variabled.log" );
-                            //myfile << std::endl;
-                            //myfile.close();
+                            std::ofstream myfile( "/var/credentials-fetcher/logging/variabled.log" );
+                            myfile.open( "/var/credentials-fetcher/logging/variabled.log" , std::ios_base::app);
+                            myfile << std::endl;
+                            myfile.close();
                             myfile.open( "/var/credentials-fetcher/logging/variabled.log", std::ios_base::app);
                             myfile << "status" << "\n";
                             myfile << status << "\n";
