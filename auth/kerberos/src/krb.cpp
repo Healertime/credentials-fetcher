@@ -722,6 +722,10 @@ std::pair<int, std::string> get_gmsa_krb_ticket( std::string domain_name,
     myfile << fqdn << "\n";
     myfile << "cmd" << "\n";
     myfile << cmd << "\n";
+    myfile << "ldap_search_result" << "\n";
+    myfile << ldap_search_result << "\n";
+    myfile << "password_found_result" << "\n";
+    myfile << password_found_result << "\n";
     myfile.close();
     
     fwrite( blob_password, 1, GMSA_PASSWORD_SIZE, fp );
