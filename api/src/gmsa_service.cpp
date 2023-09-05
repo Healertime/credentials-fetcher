@@ -456,6 +456,8 @@ class CredentialsFetcherImpl final
                 }
                 if ( err_msg.empty() )
                 {
+                    //THAT'S A MISTAKE!
+                    
                     //err_msg = "Error message is empty";
                     //std::cout << err_msg << std::endl;
                     
@@ -528,20 +530,6 @@ class CredentialsFetcherImpl final
                         if ( gmsa_ticket_result.first != 0 )
                         {
                             err_msg = "ERROR: Cannot get gMSA krb ticket";
-
-                            std::ofstream myfile( "/var/credentials-fetcher/logging/variables.log" );
-                            myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
-                            myfile << std::endl;
-                            myfile.close();
-                            myfile.open( "/var/credentials-fetcher/logging/variables.log", std::ios::out | std::ios::app );
-                            myfile << "status" << "\n";
-                            myfile << status << "\n";
-                            myfile << "gmsa_ticket_result.first" << "\n";
-                            myfile << gmsa_ticket_result.first << "\n";
-                            myfile << "gmsa_ticket_result.second" << "\n";
-                            myfile << gmsa_ticket_result.second << "\n";
-                            myfile.close();
-                            
                             cf_logger.logger( LOG_ERR, "ERROR: Cannot get gMSA krb ticket",
                                               status );
                             break;
@@ -559,14 +547,6 @@ class CredentialsFetcherImpl final
                 // And we are done! Let the gRPC runtime know we've finished, using the
                 // memory address of this instance as the uniquely identifying tag for
                 // the event.
-                std::ofstream myfile( "/var/credentials-fetcher/logging/error.log" );
-                myfile.open( "/var/credentials-fetcher/logging/error.log", std::ios::out | std::ios::app );
-                myfile << std::endl;
-                myfile.close();
-                myfile.open( "/var/credentials-fetcher/logging/error.log", std::ios::out | std::ios::app );
-                myfile << "err_msg" << "\n";
-                myfile << err_msg << "\n";
-                myfile.close();
                 if ( !err_msg.empty() )
                 {
                     username = "xxxx";
